@@ -378,6 +378,29 @@ start_init(void)
 	lwp_rtt();
 }
 
+
+static void
+boot_logo(void)
+{
+	int i, j;
+	volatile int delay = 0; 
+
+	cmn_err(CE_NOTE, "\n");
+	cmn_err(CE_NOTE, "  Welcome to Custom illumos Kernel by 0Nera       ");
+	cmn_err(CE_NOTE, "  Build Date: %s", __DATE__);
+	cmn_err(CE_NOTE, "  Hostname:   %s", nodename);
+	cmn_err(CE_NOTE, "  CPUs:       %d", ncpus);
+	cmn_err(CE_NOTE, "Booting in 5 seconds...");
+
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 100000000; j++) {
+			delay++;
+		}
+		cmn_err(CE_CONT, ".");
+	}
+	cmn_err(CE_CONT, "\n");
+}
+
 void
 main(void)
 {
@@ -678,6 +701,8 @@ main(void)
 	/* system is now ready */
 	mutex_exit(&ualock);
 
+	boot_logo();
+	
 	bcopy("sched", PTOU(curproc)->u_psargs, 6);
 	bcopy("sched", PTOU(curproc)->u_comm, 5);
 	sched();
