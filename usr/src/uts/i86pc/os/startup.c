@@ -2760,7 +2760,7 @@ uuid_to_hostid(const uint8_t *uuid)
 
 	/* first check against the blacklist */
 	for (int i = 0; i < (sizeof (smbios_uuid_blacklist) / 16); i++) {
-		if (bcmp(smbios_uuid_blacklist[0], uuid, 16) == 0) {
+		if (bcmp(smbios_uuid_blacklist[i], uuid, 16) == 0) {
 			cmn_err(CE_CONT, "?Broken SMBIOS UUID. "
 			    "Contact BIOS manufacturer for repair.\n");
 			return ((int32_t)HW_INVALID_HOSTID);
