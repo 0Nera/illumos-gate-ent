@@ -2897,7 +2897,7 @@ atoi(char *p)
 {
 	int i = 0;
 
-	while (*p != '\0')
+	while (*p >= '0' && *p <= '9')
 		i = 10 * i + (*p++ - '0');
 
 	return (i);

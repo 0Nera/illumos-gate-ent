@@ -424,7 +424,7 @@ mp_cpu_configure_common(int cpun, boolean_t boot)
 
 	/*
 	 * Allocate a per-CPU IDT and initialize the new IDT to the currently
-	 * runing CPU.
+	 * running CPU.
 	 */
 #if !defined(__lint)
 	ASSERT((sizeof (*CPU->cpu_idt) * NIDT) <= PAGESIZE);
