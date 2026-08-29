@@ -437,7 +437,7 @@ acpi_cpu_cstate(cpu_acpi_cstate_t *cstate)
 	 * When a thread becomes runnable, it is placed on the queue
 	 * and then the halted cpuset is checked to determine who
 	 * (if anyone) should be awakened. We therefore need to first
-	 * add ourselves to the halted cpuset, and and then check if there
+	 * add ourselves to the halted cpuset, and then check if there
 	 * is any work available.
 	 *
 	 * Note that memory barriers after updating the HALTED flag
