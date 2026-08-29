@@ -585,7 +585,7 @@ acpi_cpu_cstate(cpu_acpi_cstate_t *cstate)
 				 */
 				i86_monitor(mcpu_mwait, 0, 0);
 				if (*mcpu_mwait == mwait_idle_state) {
-					i86_mwait(cstate->cs_address, 1);
+					i86_mwait(0, 1);
 				}
 			} else {
 				mach_cpu_idle();
