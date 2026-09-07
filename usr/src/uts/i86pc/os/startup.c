@@ -1946,6 +1946,18 @@ startup_vm(void)
 
 	cmn_err(CE_CONT, "?mem = %luK (0x%lx)\n",
 	    physinstalled << (MMU_PAGESHIFT - 10), ptob(physinstalled));
+	cmn_err(CE_NOTE, "?modded by 0Nera\n");
+	cmn_err(CE_NOTE, "?repo =https://github.com/0nera/illumos-gate-ent\n");
+
+
+	volatile int delay = 0;
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 100000000; j++) {
+			delay++;
+		}
+		cmn_err(CE_CONT, ".");
+	}
+	cmn_err(CE_CONT, "\n");
 
 	/*
 	 * disable automatic large pages for small memory systems or
