@@ -1946,9 +1946,10 @@ startup_vm(void)
 
 	cmn_err(CE_CONT, "?mem = %luK (0x%lx)\n",
 	    physinstalled << (MMU_PAGESHIFT - 10), ptob(physinstalled));
+	
 	cmn_err(CE_NOTE, "!mem: physmem=%lu pages, "
-		"kernelbase=0x%lx, core_size=%lu, memblocks=%d",
-		physmem, kernelbase, core_size, memblocks);
+		"kernelbase=0x%lx, core_size=%lu",
+		physmem, kernelbase, core_size);
 	/*
 	 * disable automatic large pages for small memory systems or
 	 * when the disable flag is set.
@@ -2896,7 +2897,7 @@ atoi(char *p)
 {
 	int i = 0;
 
-	while (*p != '\0')
+	while (*p >= '0' && *p <= '9')
 		i = 10 * i + (*p++ - '0');
 
 	return (i);
